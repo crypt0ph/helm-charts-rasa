@@ -1,1 +1,15 @@
-
+apiVersion: v1
+entries:
+  charts:
+  - apiVersion: v2
+    appVersion: v1.0.1
+    created: "2025-03-04T03:14:31.341160768Z"
+    description: Simple API application.
+    digest: 9db9310ed0219563afda381d173f3161ef92eb03812b28646e25b8df6ac3db72
+    maintainers:
+    - name: crypt0ph
+    name: charts
+    type: application
+    urls:
+    - https://github.com/crypt0ph/helm-charts-rasa/archive/refs/tags/v1.0.1.tar.gz
+    version: 0.1.0
