@@ -2,7 +2,7 @@
 
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/rasa)](https://artifacthub.io/packages/search?repo=rasa)
 
-Official Helm charts for Rasa products:
+Unofficial Helm charts for Rasa products (updated for K8s v1.25+)
 
 - [Rasa Open Source](https://github.com/RasaHQ/helm-charts/tree/main/charts/rasa)
 - [Rasa Action Server](https://github.com/RasaHQ/helm-charts/tree/main/charts/rasa-action-server)
