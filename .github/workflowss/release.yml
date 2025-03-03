@@ -3,12 +3,7 @@ name: release
 on:
   push:
     branches:
-      - gh-pages
-
-permissions:
-  id-token: write
-  pull-requests: write
-  contents: write
+      - main
 
 jobs:
   release:
@@ -35,10 +30,3 @@ jobs:
         uses: helm/chart-releaser-action@v1.5.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-
-      - run: make install-toolchain
-      - run: make verify
-      - run: make package publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPO: ${{ github.repository }}
