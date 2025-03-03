@@ -1,44 +1,22 @@
-name: Release Charts
-
+name: Release Helm Charts
 on:
   push:
     branches:
       - main
-env:
-  HELM_EXPERIMENTAL_OCI: '1'
-  
+
 jobs:
   release:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@6135c0ff6214e01d42a5736c988e39b7831f1e2f #0.9.0
-        with:
-          access_token: ${{ github.token }}
-
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
-      - name: Configure Git
+      - name: Configure Git user
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-
-      - name: Install Helm
-        uses: azure/setup-helm@v3
-        with:
-          version: v3.11.2
-
-      - name: Helm dependency update
-        run: |
-          helm repo add bitnami https://charts.bitnami.com/bitnami
-          helm repo add rasa https://helm.rasa.com
-
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@be16258da8010256c6e82849661221415f031968
-        with:
-          config: .github/.cr.yaml
+      - name: Run chart-releaser job
+        uses: helm/chart-releaser-action@v1.4.0
         env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          CR_TOKEN: "${{ secrets.GHA_TOKEN }}"
